@@ -2,8 +2,9 @@
   "name": "react",
   "version": "1.0.0",
   "description": "This is React by Adarsh",
-  
   "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "repository": {
@@ -14,6 +15,8 @@
   "author": "Adarsh Patwa",
   "license": "ISC",
   "devDependencies": {
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
     "parcel": "^2.13.3",
     "process": "^0.11.10"
   },
