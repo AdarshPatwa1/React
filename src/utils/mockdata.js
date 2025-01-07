@@ -1,59 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-
-const Header = () => {
-    return (
-        <div className="Header" >
-            <div className="logo-container" >
-                <img 
-                 className="logo"
-                 src="https://png.pngtree.com/png-vector/20230217/ourmid/pngtree-food-logo-design-for-restaurant-and-business-png-image_6604922.png" 
-                 />
-            </div>
-            <div className="nav-items" >
-                <ul>
-                    <li>Home</li>
-                    <li>About Us</li>
-                    <li>Contact US</li>
-                    <li>Cart</li>
-                </ul>
-            </div>
-        </div>
-    )
-}
-
-
-const Restaurantcard = (props) => { // some people destructure like in place of props ({resName, cuisine}) they pass this and they use {resname} {cuisine} in the tags
-    const {resData} = props;
-
-    const {
-        cloudinaryImageId, 
-        name,
-        avgRating,
-        cuisines,
-        costForTwo,
-        deliveryTime, 
-     } = resData?.data;
-    return (
-        <div className="res-card" style={{ backgroundColor: "#f0f0f0" }}>
-            <img 
-            className="res-logo"
-            alt="res-logo"
-            src={
-                'https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_264,h_288,c_fill/' +
-                cloudinaryImageId
-              }
-              />
-            <h3>{name}</h3> 
-            <h4>{cuisines.join(" ")}</h4>
-            <h4>{avgRating} Stars</h4>
-            <h4>{costForTwo} / 100</h4>
-            <h4>{deliveryTime} minutes</h4>
-            
-        </div>
-    )
-}
+// api
 
 const resList = [
     {
@@ -2099,30 +2044,5 @@ const resList = [
     },
   ]; // api copied from swiggy
 
-const Body = () => {
-    return(
-        <div className="body" >
-            <div className="search" >Search</div>
-            <div className="res-container" >
-               {
-                resList.map(restaurant => < Restaurantcard key={restaurant.data.id} resData={restaurant}/>)
 
-               }
-            </div>
-        </div>
-    )
-}
-
-const Applayout = () => {
-    return (
-        <div className="app" >
-            <Header />
-            <Body />
-        </div>
-    )
-}
-
-
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Applayout />);
+  export default resList;
