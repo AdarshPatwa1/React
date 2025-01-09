@@ -6,7 +6,7 @@ import Shimmer from "./shimmer";
 
 const Body = () => {
 
-    //state variable - super powerful variable
+    // local state variable - super powerful variable
     const [listOfRestaurants, setListOfResataurant] = useState([]);
     const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
