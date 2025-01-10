@@ -2,7 +2,7 @@ import Restaurantcard from "./Restaurantcard";
 import resList from "../utils/mockdata";
 import { useState, useEffect} from "react";
 import Shimmer from "./shimmer";
-
+import { Link } from "react-router-dom";
 
 const Body = () => {
 
@@ -17,7 +17,7 @@ const Body = () => {
     }, []);
 
     const fetchData = async () => {
-        const data = await fetch("https://proxy.cors.sh/https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.6012849&lng=88.3312686&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.6012849&lng=88.3312686&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
         // https://proxy.cors.sh/ used for CORS error
         const json = await data.json();
         // optional chaining
@@ -62,7 +62,12 @@ const Body = () => {
             <div className="res-container" >
                {
                 filteredRestaurant.map((restaurant) =>  (
-                <Restaurantcard key={restaurant.info.id} resData={restaurant} />
+                <Link 
+                key={restaurant.info.id}
+                to={"/restaurant/" + restaurant.info.id}
+                >
+                <Restaurantcard resData={restaurant} />
+                </Link>
             ))}
             </div>
         </div>
