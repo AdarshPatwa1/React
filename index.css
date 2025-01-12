@@ -19,8 +19,7 @@
     margin: 10px;
 }
 .res-container{
-    display: 
-    flex;
+    display: flex;
     flex-wrap: wrap;
 }
 .res-card{

@@ -11,6 +11,7 @@ const Restaurantcard = (props) => { // some people destructure like in place of 
         costForTwo,
         sla, 
      } = resData?.info;
+     
     return (
         <div className="res-card" style={{ backgroundColor: "#f0f0f0" }}>
             <img 
