@@ -1,9 +1,8 @@
-import Restaurantcard from "./Restaurantcard";
+import Restaurantcard, { withPromotedLabel } from "./Restaurantcard";
 import { useState, useEffect} from "react";
 import Shimmer from "./shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus.js";
-
 
 const Body = () => {
 
@@ -12,6 +11,9 @@ const Body = () => {
     const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
     const [searchText, setSearchText] = useState("")
+
+    const RestaurantCardPromoted = withPromotedLabel(Restaurantcard);
+    
 
     useEffect(()=>{
         fetchData();  
@@ -22,7 +24,7 @@ const Body = () => {
         // https://proxy.cors.sh/ used for CORS error
         const json = await data.json();
         // optional chaining
-        // console.log(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+        console.log(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
         setListOfResataurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setFilteredRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
@@ -75,7 +77,10 @@ const Body = () => {
                 key={restaurant.info.id}
                 to={"/restaurant/" + restaurant.info.id}
                 >
-                <Restaurantcard resData={restaurant} />
+                    {/* if the restaurant is promoted then add a promote label to it */}
+                    {restaurant.info.promoted ? ( <RestaurantCardPromoted resData={restaurant} /> 
+                     ) : ( <Restaurantcard resData={restaurant} /> 
+                     )}
                 </Link>
             ))}
             </div>

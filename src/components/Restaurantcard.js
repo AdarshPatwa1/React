@@ -29,5 +29,15 @@ const Restaurantcard = (props) => { // some people destructure like in place of 
     )
 }
 
+export const withPromotedLabel = (Restaurantcard) => {
+    return (props) => {
+        return (
+            <div>
+                <label className="absolute bg-black text-white m-2 p-2 rounded-lg">Promoted</label>
+                <Restaurantcard {...props}/>
+            </div>
+        );
+    };
+};
 
 export default Restaurantcard;
