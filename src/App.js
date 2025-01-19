@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header"
 import Body from "./components/Body"
@@ -8,7 +8,8 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 // import Grocery from "./components/Grocery";
-
+import UserContext from "./utils/UserContext";
+import { useState, useEffect } from "react";
 
 // Chunking - break down app into smaller chunks ex-> small files not only one big file
 // Code Splitting
@@ -21,13 +22,27 @@ const About = lazy(() => import("./components/About"))
 
 
 const Applayout = () => {
+
+
+    const[userName, setUserName] = useState();
+    useEffect(() => {
+        const data= {
+            name: "Adarsh",
+        }
+        setUserName(data.name);
+    },[])
+
+
+
     return (
+        <UserContext.Provider value={{loggedInUser: userName, setUserName}}>
         <div className="app" >
             <Header />
             
             <Outlet /> 
             {/* contains all the condition of appRouter  */}
         </div>
+        </UserContext.Provider>
     )
 }
 
