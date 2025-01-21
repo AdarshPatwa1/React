@@ -21,7 +21,7 @@ const RestaurantMenu = () => {
 
     const { name,
          cuisines,
-          costForTwo
+          costForTwoMessage
          } = resInfo?.cards[2]?.card?.card?.info;
 
     const {itemCards} = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
@@ -41,7 +41,7 @@ const RestaurantMenu = () => {
         <div className="text-center">
             <h1 className="font-bold my-6 text-2xl">{name}</h1>
             <p className="font-bold text-lg">
-                {cuisines.join(", ")} - {costForTwo}
+                {cuisines.join(", ")} - {costForTwoMessage}
             </p>
             {/* categories accordians*/}
             {categories.map((category, index) => (

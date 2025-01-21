@@ -10,6 +10,9 @@ import RestaurantMenu from "./components/RestaurantMenu";
 // import Grocery from "./components/Grocery";
 import UserContext from "./utils/UserContext";
 import { useState, useEffect } from "react";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 
 // Chunking - break down app into smaller chunks ex-> small files not only one big file
 // Code Splitting
@@ -35,6 +38,7 @@ const Applayout = () => {
 
 
     return (
+        <Provider store={appStore}>
         <UserContext.Provider value={{loggedInUser: userName, setUserName}}>
         <div className="app" >
             <Header />
@@ -43,8 +47,9 @@ const Applayout = () => {
             {/* contains all the condition of appRouter  */}
         </div>
         </UserContext.Provider>
-    )
-}
+        </Provider>
+    );
+};
 
 const appRouter = createBrowserRouter([
     {
@@ -70,6 +75,10 @@ const appRouter = createBrowserRouter([
             {
                 path: "/restaurant/:resId", // :resId is dynamic id change acc to restaurant
                 element: <RestaurantMenu/>, // if "/contact" then header and Contact
+            },
+            {
+                path: "/cart",
+                element: <Cart />,
             },
         ],
         errorElement: <Error/>,
