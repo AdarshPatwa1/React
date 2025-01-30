@@ -14,6 +14,25 @@ import "@testing-library/jest-dom";
 
 
 describe("Contact Us Test cases", () =>{
+
+    //Helper functions
+    beforeAll(() => {
+        //console.log("Before All");
+        
+    });
+    afterAll(() => {
+        //console.log("After All");
+        
+    });
+    beforeEach(() => {
+        //console.log("Before Each");
+        
+    });
+    afterEach(() => {
+        //console.log("After Each");
+        
+    });
+
     // decribe it/test is used to group the test caese according to section
 
     // you can write test as well as it. there is no difference in it
